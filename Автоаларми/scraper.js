@@ -33,7 +33,6 @@ axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/1/25/null/`,{
             const id = product.find('.count .cell2 .descirption').attr("dir");
             const title = product.find('.count .cell2 h5').text();
             const code = product.find('.count .cell2 strong').text().replace(/[^0-9\.]+/g, "");
-            const shortTitle = title.split("за")[1]?.trim();
             const price = Math.ceil(product.find('.count .cell3').attr('data-price'));
     
             const additionalData = await axios.post(`${siteDir}/Functions/Requests/descirption.php`, `id=${id}`).then(response => {
@@ -71,7 +70,7 @@ axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/1/25/null/`,{
                 "Публикувано": 1,
                 "Подбран ли е?": 0,
                 "Видимост в каталога": "visible",
-                "Кратко описание": shortTitle,
+                "Кратко описание": `${title}. Открийте най-качествените автоаксесоари в онлайн магазин CarsZona. Разгледайте нашата гама от предложения. Пазарувайте лесно и изгодно!`,
                 "Описание": additionalData.description,
                 "Начална дата на намалението": "",
                 "Крайна дата на намалението": "",
@@ -93,7 +92,7 @@ axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/1/25/null/`,{
                 "Категории": "Интериор, Интериор > Автоаларми",
                 "Етикети": "",
                 "Клас на доставка": "",
-                "Изображения": additionalData.imagePaths,
+                "Изображения": additionalData.imagePaths[0],
                 "Лимит на изтеглянията": "",
                 "Дни на валидност на възможността за изтегляне": "",
                 "Родителски": "",
