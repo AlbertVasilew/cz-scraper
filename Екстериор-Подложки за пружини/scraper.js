@@ -32,9 +32,9 @@ axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/2/251/null/`,{
         if(isAvailable) {
             const id = product.find('.count .cell2 .descirption').attr("dir");
             const title = product.find('.count .cell2 h5').text();
-            const code = product.find('.count .cell2 strong').text().replace(/[^0-9\.]+/g, "");
+            let code = product.find('.count .cell2 strong').text().replace(/[^0-9\.]+/g, "") + "-P";
             const price = Math.ceil(product.find('.count .cell3').attr('data-price'));
-    
+
             const additionalData = await axios.post(`${siteDir}/Functions/Requests/descirption.php`, `id=${id}`).then(response => {
                 const additionalData = cheerio.load(response.data);
                 const imagesUrls = additionalData('img').map((_, image) => image.attribs.src).toArray();
@@ -50,35 +50,48 @@ axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/2/251/null/`,{
                 const imageUrlParts = firstImage.split(".");
                 const imageExtension = imageUrlParts[imageUrlParts.length-1];
 
-                let imagePath = `${code}-P`;
-                if(repeated) imagePath = `${imagePath}-${repeated.repeats}`;
+                let imagePath = code;
+
+                if(repeated) {
+                    imagePath = `${imagePath}-${repeated.repeats}`;
+                    code = `${code}-${repeated.repeats}`;
+                }
+                
                 imagePath += `.${imageExtension}`;
 
                 download_image(firstImage, imagePath);
 
                 //Description data
 
+                additionalData(".right h4").remove();
+
                 let characteristics = additionalData(".right ul");
                 characteristics.children().first().remove();
-                characteristics = `<h4>Характеристики</h4>${characteristics}`;
+                
+                characteristics = additionalData(".right ul:first");
+                characteristics.before("<h4>Характеристики</h4>");
 
-                const tableCharacteristics = additionalData(".right table").wrap("<p/>").parent().html(); //wrap in <p> to include <table> tag
-                const descirption = `${characteristics}\n\n${tableCharacteristics}`;
-
+                let description  = additionalData(".right")
+                    .contents()
+                    .toArray()
+                    .filter(x => x.name == 'ul' || x.name == 'p' || x.name == 'h4' || x.name == 'table')
+                    .map(x => cheerio.load(x).html())
+                    .join("\n");
+                    
                 return {
-                    descirption: descirption
+                    descirption: description
                 }
             })
     
             return {
                 "Вид": "simple",
-                "Код": `${code}-P`,
+                "Код": code,
                 "Име": title,
                 "Публикувано": 1,
                 "Подбран ли е?": 0,
                 "Видимост в каталога": "visible",
                 "Кратко описание": `${title}. Открийте най-качествените автоаксесоари в онлайн магазин CarsZona. Разгледайте нашата гама от предложения. Пазарувайте лесно и изгодно!`,
-                "Описание": `${title + additionalData.descirption}`,
+                "Описание": `${title}\n${additionalData.descirption}`,
                 "Начална дата на намалението": "",
                 "Крайна дата на намалението": "",
                 "Състояние на таксата": "taxable",
