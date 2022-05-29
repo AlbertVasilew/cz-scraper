@@ -3,4 +3,5 @@
 
 # scraper generated items
 images
-products.csv
+*.csv
+*.xlsx
