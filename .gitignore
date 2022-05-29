@@ -1,7 +1,6 @@
 # dependencies
 /node_modules
 
-# scraper generated items
+# others
 images
-*.csv
 *.xlsx
