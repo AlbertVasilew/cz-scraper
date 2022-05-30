@@ -74,7 +74,7 @@ axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/2/42/null/`,{
                 let description  = additionalData(".right")
                     .contents()
                     .toArray()
-                    .filter(x => x.name == 'ul' || x.name == 'p' || x.name == 'h4')
+                    .filter(x => x.name == 'ul' || x.name == 'ol' || x.name == 'span' || x.name == 'p' || x.name == 'h4' || x.name == 'table')
                     .map(x => cheerio.load(x).html())
                     .join("\n");
                     
