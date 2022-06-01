@@ -109,7 +109,7 @@ axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/8/234/null/`,{
                 "Бележка при поръчка": "",
                 "Промоционална цена:": "",
                 "Редовна цена:": price,
-                "Категории": "Аксесоари, Аксесоари > Други",
+                "Категории": "Аксесоари",
                 "Етикети": "",
                 "Клас на доставка": "",
                 "Изображения": "https://carszona.com/wp-content/uploads/2022/05/carsz.jpg",
@@ -148,7 +148,7 @@ axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/8/234/null/`,{
                 "Мета: _oembed_time_35685db3bb5eeefe73cf191626b3d519": '1650192558',
                 "Мета: _wp_old_date": '2021-01-07',
                 "Мета: rank_math_seo_score": '63',
-                // "Мета: rank_math_primary_product_cat": '881',, //да се смени кода
+                "Мета: rank_math_primary_product_cat": '879',
                 "Мета: rank_math_focus_keyword": title,
                 "Мета: rank_math_description": `${title}. Открийте най-качествените автоаксесоари в онлайн магазин CarsZona. Разгледайте нашата гама от предложения. Пазарувайте лесно и изгодно!`
             }
