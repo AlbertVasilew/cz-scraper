@@ -3,6 +3,7 @@
 
 # others
 images
+*.csv
 *.xlsx
 *.zip
 *.7z
