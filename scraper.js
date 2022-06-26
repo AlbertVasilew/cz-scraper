@@ -19,8 +19,8 @@ const download_image = (url, image_path) => {
 
 const siteDir = 'https://b2b.paolo.ltd';
 
-axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/166/45/null/`,{
-    headers: { 'Cookie': 'PHPSESSID=9351c237052831ea98c0845877b7fa47' }
+axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/4/134/128/null/`,{
+    headers: { 'Cookie': 'PHPSESSID=d7cb496b0a04c965b964564f6d388f3b' }
 }).then(response => {
     const category = cheerio.load(response.data);
     const processedCodes = [];
@@ -109,7 +109,7 @@ axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/166/45/null/`,{
                 "Бележка при поръчка": "",
                 "Промоционална цена:": "",
                 "Редовна цена:": price,
-                "Категории": "Осветление, Осветление > Халогенни крушки",
+                "Категории": "Аксесоари за мотори, Аксесоари за мотори > Гардове",
                 "Етикети": "",
                 "Клас на доставка": "",
                 "Изображения": "https://carszona.com/wp-content/uploads/2022/05/carsz.jpg",
@@ -148,7 +148,7 @@ axios.get(`${siteDir}/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/1/166/45/null/`,{
                 "Мета: _oembed_time_35685db3bb5eeefe73cf191626b3d519": '1650192558',
                 "Мета: _wp_old_date": '2021-01-07',
                 "Мета: rank_math_seo_score": '63',
-                "Мета: rank_math_primary_product_cat": '922',
+                "Мета: rank_math_primary_product_cat": '1102',
                 "Мета: rank_math_focus_keyword": title,
                 "Мета: rank_math_description": `${title}. Открийте най-качествените автоаксесоари в онлайн магазин CarsZona. Разгледайте нашата гама от предложения. Пазарувайте лесно и изгодно!`
             }

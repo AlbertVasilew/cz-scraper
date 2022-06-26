@@ -1,9 +1,2 @@
 # dependencies
 /node_modules
-
-# others
-images
-*.csv
-*.xlsx
-*.zip
-*.7z
